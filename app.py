@@ -1,7 +1,10 @@
 from flask import Flask, jsonify, request
 from sense_hat import SenseHat
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+#cors = CORS(app, resources={r'/*': {'origins': 'http://169.254.207.87'}})# allow this domain to access api
 sense = SenseHat()
 sense.set_imu_config(True, True, True)  # compass, gyroscope, accel
 
